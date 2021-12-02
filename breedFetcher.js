@@ -1,12 +1,9 @@
 const request = require('request');
-//const fetch = require("node-fetch");
+const args = process.argv.slice(2); // for command line arguments
 
-let descriptionUrl = 'https://api.thecatapi.com/v1/breeds/search?q=Siberian';
+request(`https://api.thecatapi.com/v1/breeds/search?q=${args}`, (err, response, body) => {
+  if (err) {
+    console.log(JSON.parse(err))
+  } 
+});
 
-//http request
-request('https://api.thecatapi.com/v1/breeds/search?q=Siberian', (error, response, body) => {
-      if (err) {
-        console.log(err) 
-      }
-
-    });
